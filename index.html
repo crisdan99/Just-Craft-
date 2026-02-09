@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Just-Craft</title>
+
+  <!-- Fuente retro -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    /* LOGO */
+    .logo {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* TITULO RETRO */
+    .title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 36px;
+      color: #ff9800;
+      margin-bottom: 10px;
+    }
+
+    /* SIGLAS */
+    .siglas {
+      font-size: 16px;
+      letter-spacing: 4px;
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
+
+    /* SUBTEXTO */
+    .sub {
+      font-size: 14px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    /* TEXTO CON COLORES */
+    .color-text span {
+      font-size: 16px;
+      animation: colorChange 3s infinite;
+    }
+
+    .color-text span:nth-child(1) { animation-delay: 0s; }
+    .color-text span:nth-child(2) { animation-delay: 0.1s; }
+    .color-text span:nth-child(3) { animation-delay: 0.2s; }
+    .color-text span:nth-child(4) { animation-delay: 0.3s; }
+    .color-text span:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes colorChange {
+      0%   { color: #ff5722; }
+      25%  { color: #ff9800; }
+      50%  { color: #4caf50; }
+      75%  { color: #03a9f4; }
+      100% { color: #e91e63; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- LOGO (temporal) -->
+    <div class="logo">LOGO</div>
+
+    <!-- TITULO -->
+    <div class="title">JUST-CRAFT</div>
+
+    <!-- SIGLAS -->
+    <div class="siglas">JC</div>
+
+    <!-- SUB -->
+    <div class="sub">Survival | Minetest Game | Server</div>
+
+    <!-- DESCRIPCIÓN COLORIDA -->
+    <div class="color-text">
+      <span>S</span><span>e</span><span>r</span><span>v</span><span>e</span><span>r</span>
+      <span>&nbsp;</span>
+      <span>c</span><span>o</span><span>m</span><span>u</span><span>n</span><span>i</span><span>d</span><span>a</span><span>d</span>
+      <span>&nbsp;</span>
+      <span>y</span>
+      <span>&nbsp;</span>
+      <span>a</span><span>v</span><span>e</span><span>n</span><span>t</span><span>u</span><span>r</span><span>a</span>
+    </div>
+
+  </div>
+</body>
+                                                                                     </html>
