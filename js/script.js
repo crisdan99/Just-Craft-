@@ -27,8 +27,11 @@ const translations = {
     pageTitle: "Just-Craft Adventure | Official Server",
     serverTitle: "JUST-CRAFT ADVENTURE SERVER",
     officialCommunity: "Official Community",
+    officialInformation: "Official Information",
     joinDiscord: "Join our Discord!",
+    viewInformation: "View our information",
     joinLink: "JOIN",
+    infoLink: "INFO",
     officialForum: "Luanti Forum",
     visitForum: "Just-Craft Forum Post",
     visitLink: "VISIT",
@@ -55,8 +58,11 @@ const translations = {
     pageTitle: "Just-Craft Adventure | Servidor Oficial",
     serverTitle: "SERVIDOR JUST-CRAFT ADVENTURE",
     officialCommunity: "Comunidad Oficial",
+    officialInformation: "Información Oficial",
     joinDiscord: "¡Únete a nuestro Discord!",
+    viewInformation: "Consulta nuestra información",
     joinLink: "UNIRSE",
+    joinLink: "INFO",
     officialForum: "Foro de Luanti",
     visitForum: "Publicación del foro de Just-Craft",
     visitLink: "VISITAR",
@@ -106,9 +112,13 @@ function applyTranslations(){
 
   document.getElementById("serverTitle").textContent = T.serverTitle;
 
-  document.getElementById("officialCommunity").textContent = T.officialCommunity;
-  document.getElementById("joinDiscord").textContent = T.joinDiscord;
-  document.getElementById("joinLink").textContent = T.joinLink;
+  if(document.getElementById("officialCommunity")) document.getElementById("officialCommunity").textContent = T.officialCommunity;
+  if(document.getElementById("joinDiscord")) document.getElementById("joinDiscord").textContent = T.joinDiscord;
+  if(document.getElementById("joinLink")) document.getElementById("joinLink").textContent = T.joinLink;
+
+  if(document.getElementById("officialInformation")) document.getElementById("officialInformation").textContent = T.officialInformation;
+  if(document.getElementById("viewInformation")) document.getElementById("viewInformation").textContent = T.viewInformation;
+  if(document.getElementById("infoLink")) document.getElementById("infoLink").textContent = T.infoLink;
 
   document.getElementById("officialForum").textContent = T.officialForum;
   document.getElementById("visitForum").textContent = T.visitForum;
@@ -302,7 +312,13 @@ let serverJsonLastModified = null;
 async function checkServerData(){
   try{
     const response = await fetch(
-      SERVER_JSON_URL + "?t=" + Date.now(), { method: "HEAD", cache: "no-store" } );
+      SERVER_JSON_URL + "?t=" + Date.now(),
+      {
+        method: "HEAD",
+        cache: "no-store",
+        signal: AbortSignal.timeout(5000)
+      }
+    );
 
     if(!response.ok){
       throw new Error("HTTP error: " + response.status);
@@ -329,6 +345,11 @@ async function checkServerData(){
 
   }catch(error){
     console.error("Could not check server data:", error);
+
+    document.getElementById("statusDot").className = "status-dot offline";
+    document.getElementById("serverStatus").textContent = T.serverStatusUnavailable;
+    document.getElementById("playerList").innerHTML =
+      '<span class="no-players">' + T.couldNotContact + '</span>';
   }
 }
 
